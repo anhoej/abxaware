@@ -1,0 +1,20 @@
+Package: test
+Title: AWaRe classification of Antibiotic Usage Data
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Jacob",
+             family = "Anhøj",
+             role = c("aut", "cre"),
+             email = "jacob@anhoej.net",
+             comment = c(ORCID = "0000-0002-7701-1774")),
+      person(given = "Jonas Bredtoft",
+             family = "Boel",
+             role = c("aut"),
+             email = "",
+             comment = c(ORCID = "0000-0003-3085-0930")))
+Description: Aggregate and plot antibiotic usage data by access, watch, and reserve (AWaRe) groups.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
