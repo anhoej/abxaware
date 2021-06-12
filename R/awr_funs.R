@@ -110,8 +110,6 @@ awr_plot <- function(.data,
 
     if(!missing(unit) )
       p <- p + ggplot2::facet_wrap(ggplot2::vars({{ unit }}), ncol = ncol)
-
-
   }
 
   p <- p +
