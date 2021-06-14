@@ -25,11 +25,11 @@ Aggregate antibiotic usage data by AWaRe group
 }
 \examples{
 awr_aggregate(abx_sales)
+awr_aggregate(abx_sales, atc, ddd)
 awr_aggregate(abx_sales, atc, addd)
-awr_aggregate(abx_sales, atc, ddd, month)
 awr_aggregate(abx_sales, atc, ddd, region)
-awr_aggregate(abx_sales, atc, ddd, month, region)
-awr_aggregate(abx_sales, atc, ddd, month, hospital)
-awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
 awr_aggregate(abx_sales, atc, ddd, region, tall = FALSE)
+awr_aggregate(abx_sales, atc, ddd, month)
+awr_aggregate(abx_sales, atc, ddd, month, region)
+awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
 }

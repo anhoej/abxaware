@@ -19,13 +19,13 @@ utils::globalVariables(c(
 #'
 #' @examples
 #' awr_aggregate(abx_sales)
+#' awr_aggregate(abx_sales, atc, ddd)
 #' awr_aggregate(abx_sales, atc, addd)
-#' awr_aggregate(abx_sales, atc, ddd, month)
 #' awr_aggregate(abx_sales, atc, ddd, region)
-#' awr_aggregate(abx_sales, atc, ddd, month, region)
-#' awr_aggregate(abx_sales, atc, ddd, month, hospital)
-#' awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
 #' awr_aggregate(abx_sales, atc, ddd, region, tall = FALSE)
+#' awr_aggregate(abx_sales, atc, ddd, month)
+#' awr_aggregate(abx_sales, atc, ddd, month, region)
+#' awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
 
 awr_aggregate <- function(df,
                           atc = atc,
@@ -79,7 +79,6 @@ awr_aggregate <- function(df,
 #' awr_plot(abx_sales, atc, ddd, unit = region)
 #' awr_plot(abx_sales, atc, ddd, time = month)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = region)
-#' awr_plot(abx_sales, atc, ddd, time = month, unit = region, ncol = 1)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital,
 #'          ncol = 4, na.rm = TRUE, legend.position = 'none')
 awr_plot <- function(df,
