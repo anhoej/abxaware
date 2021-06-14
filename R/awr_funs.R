@@ -65,9 +65,10 @@ awr_aggregate <- function(.data,
 #' awr_plot(abx_sales, atc, addd, na.rm = TRUE)
 #' awr_plot(abx_sales, atc, ddd, unit = region)
 #' awr_plot(abx_sales, atc, ddd, time = month)
-#' awr_plot(abx_sales, atc, ddd, month, region)
-#' awr_plot(abx_sales, atc, ddd, month, region, ncol = 1)
-#' awr_plot(abx_sales, atc, ddd, month, hospital, ncol = 4, na.rm = TRUE, legend.position = 'none')
+#' awr_plot(abx_sales, atc, ddd, time = month, unit = region)
+#' awr_plot(abx_sales, atc, ddd, time = month, unit = region, ncol = 1)
+#' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital,
+#'          ncol = 4, na.rm = TRUE, legend.position = 'none')
 awr_plot <- function(.data,
                      atc             = atc,
                      ddd             = ddd,
@@ -77,6 +78,8 @@ awr_plot <- function(.data,
                      ncol            = NULL,
                      legend.position = NULL,
                      ...) {
+
+
   col_red   <- '#F07E6E'
   col_amber <- '#FBB258'
   col_green <- '#90CD97'
@@ -102,6 +105,10 @@ awr_plot <- function(.data,
       ggplot2::coord_flip() +
       ggplot2::labs(x = NULL)
   } else {
+    if (!inherits(dplyr::pull(.data, {{ time }}), c('Date', 'POSIXt'))) {
+      stop('time variable must be date or datatime')
+    }
+
     p <- ggplot2::ggplot(d,
                          ggplot2::aes(x    = {{ time }},
                                       y    = p,

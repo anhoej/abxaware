@@ -47,7 +47,8 @@ awr_plot(abx_sales, atc, addd)
 awr_plot(abx_sales, atc, addd, na.rm = TRUE)
 awr_plot(abx_sales, atc, ddd, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month)
-awr_plot(abx_sales, atc, ddd, month, region)
-awr_plot(abx_sales, atc, ddd, month, region, ncol = 1)
-awr_plot(abx_sales, atc, ddd, month, hospital, ncol = 4, na.rm = TRUE, legend.position = 'none')
+awr_plot(abx_sales, atc, ddd, time = month, unit = region)
+awr_plot(abx_sales, atc, ddd, time = month, unit = region, ncol = 1)
+awr_plot(abx_sales, atc, ddd, time = month, unit = hospital,
+         ncol = 4, na.rm = TRUE, legend.position = 'none')
 }
