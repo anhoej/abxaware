@@ -40,6 +40,8 @@ awr_aggregate <- function(df,
     dplyr::group_by(aware, ...) %>%
     dplyr::summarise('{{ddd}}' := sum({{ ddd }}),
                      .groups    = 'drop') %>%
+    tidyr::complete(aware, ...) %>%
+    dplyr::mutate('{{ddd}}' := tidyr::replace_na({{ ddd }}, 0)) %>%
     dplyr::group_by(...) %>%
     dplyr::mutate(total = sum({{ ddd }}),
                   p     = {{ ddd }} / total) %>%
