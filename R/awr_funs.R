@@ -19,9 +19,7 @@ utils::globalVariables(c(
 #'
 #' @examples
 #' awr_aggregate(abx_sales)
-#' awr_aggregate(abx_sales)
-#' awr_aggregate(abx_sales, atc, ddd = addd)
-#' awr_aggregate(abx_sales, atc, ddd)
+#' awr_aggregate(abx_sales, atc, addd)
 #' awr_aggregate(abx_sales, atc, ddd, month)
 #' awr_aggregate(abx_sales, atc, ddd, region)
 #' awr_aggregate(abx_sales, atc, ddd, month, region)
