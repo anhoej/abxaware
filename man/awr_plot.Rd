@@ -5,7 +5,7 @@
 \title{Plot AWaRe data}
 \usage{
 awr_plot(
-  .data,
+  df,
   atc = atc,
   ddd = ddd,
   time = NULL,
@@ -17,7 +17,7 @@ awr_plot(
 )
 }
 \arguments{
-\item{.data}{Data frame.}
+\item{df}{Data frame.}
 
 \item{atc}{ATC code.}
 

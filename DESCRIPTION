@@ -22,6 +22,8 @@ Depends:
     R (>= 3.3)
 Imports:
     dplyr,
+    tidyr,
+    forcats,
     magrittr,
     ggplot2,
     scales,

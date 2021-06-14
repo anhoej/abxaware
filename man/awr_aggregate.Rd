@@ -4,16 +4,18 @@
 \alias{awr_aggregate}
 \title{Aggregate antibiotic usage data by AWaRe group}
 \usage{
-awr_aggregate(.data, atc = atc, ddd = ddd, ...)
+awr_aggregate(df, atc = atc, ddd = ddd, ..., tall = TRUE)
 }
 \arguments{
-\item{.data}{Data frame}
+\item{df}{Data frame}
 
 \item{atc}{ATC code}
 
 \item{ddd}{Amount (usually Defined Daily Doses)}
 
 \item{...}{Grouping variables}
+
+\item{tall}{If TRUE (default) outputs data in tall format}
 }
 \value{
 A data frame.
@@ -31,4 +33,5 @@ awr_aggregate(abx_sales, atc, ddd, region)
 awr_aggregate(abx_sales, atc, ddd, month, region)
 awr_aggregate(abx_sales, atc, ddd, month, hospital)
 awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
+awr_aggregate(abx_sales, atc, ddd, region, tall = FALSE)
 }

@@ -2,15 +2,17 @@ utils::globalVariables(c(
   ':=',
   'abx_aware',
   'aware',
-  'total'
+  'total',
+  'p'
 ))
 
 #' Aggregate antibiotic usage data by AWaRe group
 #'
-#' @param .data Data frame
+#' @param df Data frame
 #' @param atc ATC code
 #' @param ddd Amount (usually Defined Daily Doses)
 #' @param ... Grouping variables
+#' @param tall If TRUE (default) outputs data in tall format
 #'
 #' @return A data frame.
 #' @export
@@ -25,12 +27,14 @@ utils::globalVariables(c(
 #' awr_aggregate(abx_sales, atc, ddd, month, region)
 #' awr_aggregate(abx_sales, atc, ddd, month, hospital)
 #' awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
+#' awr_aggregate(abx_sales, atc, ddd, region, tall = FALSE)
 
-awr_aggregate <- function(.data,
+awr_aggregate <- function(df,
                           atc = atc,
                           ddd = ddd,
-                          ...) {
-  d <- .data %>%
+                          ...,
+                          tall = TRUE) {
+  d <- df %>%
     dplyr::mutate(atc = {{ atc }}) %>%
     dplyr::left_join(abx_aware, by = 'atc')  %>%
     dplyr::group_by(aware, ...) %>%
@@ -41,12 +45,21 @@ awr_aggregate <- function(.data,
                   p     = {{ ddd }} / total) %>%
     dplyr::ungroup()
 
+  if(!tall) {
+    d <- d %>%
+      dplyr::select(-p) %>%
+      dplyr::mutate(aware = forcats::fct_explicit_na(aware, 'missing')) %>%
+      tidyr::pivot_wider(names_from = aware,
+                         values_from = {{ ddd }}) %>%
+      tidyr::replace_na(list(missing = 0))
+  }
+
   d
 }
 
 #' Plot AWaRe data
 #'
-#' @param .data Data frame.
+#' @param df Data frame.
 #' @param atc ATC code.
 #' @param ddd Amount.
 #' @param time Time period.
@@ -69,7 +82,7 @@ awr_aggregate <- function(.data,
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = region, ncol = 1)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital,
 #'          ncol = 4, na.rm = TRUE, legend.position = 'none')
-awr_plot <- function(.data,
+awr_plot <- function(df,
                      atc             = atc,
                      ddd             = ddd,
                      time            = NULL,
@@ -79,12 +92,11 @@ awr_plot <- function(.data,
                      legend.position = NULL,
                      ...) {
 
-
   col_red   <- '#F07E6E'
   col_amber <- '#FBB258'
   col_green <- '#90CD97'
 
-  d <- awr_aggregate(.data,
+  d <- awr_aggregate(df,
                      {{ atc }},
                      {{ ddd }},
                      {{ time }},
@@ -105,8 +117,9 @@ awr_plot <- function(.data,
       ggplot2::coord_flip() +
       ggplot2::labs(x = NULL)
   } else {
-    if (!inherits(dplyr::pull(.data, {{ time }}), c('Date', 'POSIXt'))) {
-      stop('time variable must be date or datatime')
+    if (!inherits(dplyr::pull(df, {{ time }}), c('Date', 'POSIXt'))) {
+      stop('Time must be a date or datetime variable',
+           call. = FALSE)
     }
 
     p <- ggplot2::ggplot(d,
