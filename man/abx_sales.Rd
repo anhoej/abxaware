@@ -3,7 +3,7 @@
 \docType{data}
 \name{abx_sales}
 \alias{abx_sales}
-\title{AWaRe classification of ATC codes.}
+\title{Antibiotic sales to Danish hospitals 2015-2020.}
 \format{
 A data frame with 47551 rows and 7 variables:
 \describe{
@@ -14,7 +14,6 @@ A data frame with 47551 rows and 7 variables:
 \item{drug}{Drug name, character}
 \item{ddd}{Amount purchased, Defined Daily Dosages (DDD)}
 \item{addd}{Amount purchased, DDDs adjusted to Danish recommendations}
-...
 }
 }
 \source{

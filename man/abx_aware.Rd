@@ -10,7 +10,6 @@ A data frame with 318 rows and 3 variables:
 \item{atc}{ATC code, character}
 \item{text}{Drug name, character}
 \item{aware}{AWaRe group, access, watch or reserve, factor}
-...
 }
 }
 \source{

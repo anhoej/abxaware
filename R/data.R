@@ -7,12 +7,11 @@
 #'   \item{atc}{ATC code, character}
 #'   \item{text}{Drug name, character}
 #'   \item{aware}{AWaRe group, access, watch or reserve, factor}
-#'   ...
 #' }
 #' @source \url{https://adoptaware.org/}
 "abx_aware"
 
-#' AWaRe classification of ATC codes.
+#' Antibiotic sales to Danish hospitals 2015-2020.
 #'
 #' A dataset containing antibiotic sales data from Danish hospitals 2015-2020.
 #'
@@ -25,7 +24,21 @@
 #'   \item{drug}{Drug name, character}
 #'   \item{ddd}{Amount purchased, Defined Daily Dosages (DDD)}
 #'   \item{addd}{Amount purchased, DDDs adjusted to Danish recommendations}
-#'   ...
 #' }
 #' @source \url{https://amgros.dk/}
 "abx_sales"
+
+#' Antibiotic usage data from six hospitals.
+#'
+#' A dataset containing antibiotic sales data from Danish hospitals 2015-2020.
+#'
+#' @format A data frame with 8441 rows and 5 variables:
+#' \describe{
+#'   \item{hosp}{Hospital, character}
+#'   \item{month}{Month, date}
+#'   \item{atc}{ATC code, character}
+#'   \item{drug}{Drug name, character}
+#'   \item{n}{Number of antibiotic treatment days, 1 patient x 1 drug = 1 day}
+#' }
+#' @source \url{https://regionh.dk/}
+"abx_days"
