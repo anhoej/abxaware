@@ -41,7 +41,7 @@ awr_aggregate <- function(df,
     tidyr::complete(aware, ...) %>%
     dplyr::mutate('{{ddd}}' := tidyr::replace_na({{ ddd }}, 0)) %>%
     dplyr::group_by(...) %>%
-    dplyr::mutate(total = sum({{ ddd }}),
+    dplyr::mutate(total = sum({{ ddd }}, na.rm = TRUE),
                   p     = {{ ddd }} / total) %>%
     dplyr::ungroup()
 
