@@ -3,7 +3,7 @@
 \docType{data}
 \name{abx_sales}
 \alias{abx_sales}
-\title{Antibiotic sales to Danish hospitals 2015-2020.}
+\title{Antibiotic sales data.}
 \format{
 A data frame with 47551 rows and 7 variables:
 \describe{

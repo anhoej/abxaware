@@ -4,7 +4,7 @@
 \alias{awr_aggregate}
 \title{Aggregate antibiotic usage data by AWaRe group}
 \usage{
-awr_aggregate(df, atc = atc, ddd = ddd, ..., tall = TRUE)
+awr_aggregate(df, atc = atc, ddd = ddd, ..., tall = FALSE)
 }
 \arguments{
 \item{df}{Data frame}

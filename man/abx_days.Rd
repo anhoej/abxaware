@@ -3,7 +3,7 @@
 \docType{data}
 \name{abx_days}
 \alias{abx_days}
-\title{Antibiotic usage data from six hospitals.}
+\title{Antibiotic usage.}
 \format{
 A data frame with 8441 rows and 5 variables:
 \describe{
@@ -21,6 +21,7 @@ A data frame with 8441 rows and 5 variables:
 abx_days
 }
 \description{
-A dataset containing antibiotic sales data from Danish hospitals 2015-2020.
+A dataset containing antibiotic usage data from from six hospitals from
+varying time periods.
 }
 \keyword{datasets}

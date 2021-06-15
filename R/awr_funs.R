@@ -31,7 +31,7 @@ awr_aggregate <- function(df,
                           atc = atc,
                           ddd = ddd,
                           ...,
-                          tall = TRUE) {
+                          tall = FALSE) {
   d <- df %>%
     dplyr::mutate(atc = {{ atc }}) %>%
     dplyr::left_join(abx_aware, by = 'atc')  %>%
@@ -43,7 +43,8 @@ awr_aggregate <- function(df,
     dplyr::group_by(...) %>%
     dplyr::mutate(total = sum({{ ddd }}, na.rm = TRUE),
                   p     = {{ ddd }} / total) %>%
-    dplyr::ungroup()
+    dplyr::ungroup() %>%
+    dplyr::filter(total > 0)
 
   if(!tall) {
     d <- d %>%
@@ -81,6 +82,7 @@ awr_aggregate <- function(df,
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = region)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital,
 #'          ncol = 4, na.rm = TRUE, legend.position = 'none')
+#' awr_plot(abx_days, atc, n, time = month, unit = hosp)
 awr_plot <- function(df,
                      atc             = atc,
                      ddd             = ddd,
@@ -99,7 +101,8 @@ awr_plot <- function(df,
                      {{ atc }},
                      {{ ddd }},
                      {{ time }},
-                     {{ unit }})
+                     {{ unit }},
+                     tall = TRUE)
 
   if(missing(time)) {
     if(missing(unit) ) {
