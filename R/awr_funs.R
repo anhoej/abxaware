@@ -15,6 +15,7 @@ utils::globalVariables(c(
 #' @param tall If TRUE (default) outputs data in tall format.
 #' @param method 'dk' (default) or 'who' indicating the AWaRe classification to
 #'        be used.
+#' @param ignore.other If TRUE, ignores drugs that have no AWaRe class.
 #'
 #' @return A data frame.
 #' @export
@@ -34,12 +35,21 @@ awr_aggregate <- function(df,
                           ddd = ddd,
                           ...,
                           tall = FALSE,
-                          method = c('dk', 'who')) {
-  method <- paste0('aware_', match.arg(method))
+                          method = c('dk', 'who'),
+                          ignore.other = FALSE) {
+  method <- paste0('aware_',
+                   match.arg(method)) %>%
+    rlang::sym()
+
   d <- df %>%
     dplyr::mutate(atc = {{ atc }}) %>%
-    dplyr::left_join(abx_aware, by = 'atc')  %>%
-    dplyr::mutate(aware = !! rlang::sym(method)) %>%
+    dplyr::left_join(abx_aware, by = 'atc') %>%
+    dplyr::mutate(aware = !!method)
+
+  if(ignore.other)
+    d <- dplyr::filter(d, !is.na(aware))
+
+  d <- d %>%
     dplyr::group_by(aware, ...) %>%
     dplyr::summarise('{{ddd}}' := sum({{ ddd }}),
                      .groups    = 'drop') %>%
@@ -50,8 +60,12 @@ awr_aggregate <- function(df,
                   p     = {{ ddd }} / total) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(aware = forcats::fct_explicit_na(aware, 'other'),
-                  aware = forcats::fct_relevel(aware, 'other')) %>%
-    dplyr::filter(total > 0)
+                  ) %>%
+    dplyr::filter(total > 0) %>%
+    identity()
+
+  if(!ignore.other)
+    d <- dplyr::mutate(d, aware = forcats::fct_relevel(aware, 'other'))
 
   if(!tall) {
     d <- d %>%
@@ -74,9 +88,7 @@ awr_aggregate <- function(df,
 #' @param ncol Integer, number of columns in faceted plots.
 #' @param legend.position Character, where to put legend (e.g. 'none', 'right',
 #'        'bottom').
-#' @param method 'dk' (default) or 'who' indicating the AWaRe classification to
-#'        be used.
-#' @param ... Other arguments to ggplot().
+#' @param ... Other arguments to awr_aggregate() and ggplot().
 #'
 #' @return A ggplot object.
 #' @export
@@ -96,7 +108,7 @@ awr_plot <- function(df,
                      unit            = NULL,
                      ncol            = NULL,
                      legend.position = NULL,
-                     method = c('dk', 'who'),
+                     # method = c('dk', 'who'),
                      ...) {
   cols <- c('other'   = 'grey90',
             'access'  = '#90CD97', #
@@ -109,8 +121,8 @@ awr_plot <- function(df,
                      {{ ddd }},
                      {{ time }},
                      {{ unit }},
-                     method = method,
-                     tall = TRUE)
+                     tall = TRUE,
+                     ...)
 
   if(missing(time)) {
     if(missing(unit) ) {

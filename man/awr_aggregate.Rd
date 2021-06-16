@@ -10,7 +10,8 @@ awr_aggregate(
   ddd = ddd,
   ...,
   tall = FALSE,
-  method = c("dk", "who")
+  method = c("dk", "who"),
+  ignore.other = FALSE
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ awr_aggregate(
 
 \item{method}{'dk' (default) or 'who' indicating the AWaRe classification to
 be used.}
+
+\item{ignore.other}{If TRUE, ignores drugs that have no AWaRe class.}
 }
 \value{
 A data frame.

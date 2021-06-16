@@ -12,7 +12,6 @@ awr_plot(
   unit = NULL,
   ncol = NULL,
   legend.position = NULL,
-  method = c("dk", "who"),
   ...
 )
 }
@@ -32,10 +31,7 @@ awr_plot(
 \item{legend.position}{Character, where to put legend (e.g. 'none', 'right',
 'bottom').}
 
-\item{method}{'dk' (default) or 'who' indicating the AWaRe classification to
-be used.}
-
-\item{...}{Other arguments to ggplot().}
+\item{...}{Other arguments to awr_aggregate() and ggplot().}
 }
 \value{
 A ggplot object.
