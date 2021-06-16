@@ -37,9 +37,14 @@ awr_aggregate <- function(df,
                           tall = FALSE,
                           method = c('dk', 'who'),
                           ignore.other = FALSE) {
+  message(paste0('Aggregating data using the "',
+                 match.arg(method),
+                 '" AWaRe classification'))
+
   method <- paste0('aware_',
                    match.arg(method)) %>%
     rlang::sym()
+
 
   d <- df %>%
     dplyr::mutate(atc = {{ atc }}) %>%
