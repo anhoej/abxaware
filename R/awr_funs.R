@@ -30,12 +30,13 @@ utils::globalVariables(c(
 #' awr_aggregate(abx_sales, atc, ddd, month, region)
 #' awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
 #' awr_aggregate(abx_days, atc, n, month, hosp)
+#'
 awr_aggregate <- function(df,
-                          atc = atc,
-                          ddd = ddd,
+                          atc          = atc,
+                          ddd          = ddd,
                           ...,
-                          tall = FALSE,
-                          method = c('dk', 'who'),
+                          tall         = FALSE,
+                          method       = c('dk', 'who'),
                           ignore.other = FALSE) {
   message(paste0('Aggregating data using the "',
                  match.arg(method),
@@ -44,7 +45,6 @@ awr_aggregate <- function(df,
   method <- paste0('aware_',
                    match.arg(method)) %>%
     rlang::sym()
-
 
   d <- df %>%
     dplyr::mutate(atc = {{ atc }}) %>%
@@ -64,13 +64,13 @@ awr_aggregate <- function(df,
     dplyr::mutate(total = sum({{ ddd }}, na.rm = TRUE),
                   p     = {{ ddd }} / total) %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(aware = forcats::fct_explicit_na(aware, 'other'),
-                  ) %>%
-    dplyr::filter(total > 0) %>%
-    identity()
+    dplyr::filter(total > 0)
 
-  if(!ignore.other)
-    d <- dplyr::mutate(d, aware = forcats::fct_relevel(aware, 'other'))
+  if(!ignore.other) {
+    d <- d %>%
+      dplyr::mutate(aware = forcats::fct_explicit_na(aware, 'other'),
+                    aware = forcats::fct_relevel(aware, 'other'))
+  }
 
   if(!tall) {
     d <- d %>%
@@ -106,6 +106,7 @@ awr_aggregate <- function(df,
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = region)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
 #' awr_plot(abx_days, atc, n, time = month)
+#'
 awr_plot <- function(df,
                      atc             = atc,
                      ddd             = ddd,
@@ -116,7 +117,7 @@ awr_plot <- function(df,
                      # method = c('dk', 'who'),
                      ...) {
   cols <- c('other'   = 'grey90',
-            'access'  = '#90CD97', #
+            'access'  = '#90CD97', # green
             'watch'   = '#FBB258', # amber
             'reserve' = '#F07E6E'  # red
   )

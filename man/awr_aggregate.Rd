@@ -46,4 +46,5 @@ awr_aggregate(abx_sales, atc, ddd, month)
 awr_aggregate(abx_sales, atc, ddd, month, region)
 awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
 awr_aggregate(abx_days, atc, n, month, hosp)
+
 }
