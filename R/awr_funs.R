@@ -8,11 +8,13 @@ utils::globalVariables(c(
 
 #' Aggregate antibiotic usage data by AWaRe group
 #'
-#' @param df Data frame
-#' @param atc ATC code
-#' @param ddd Amount (usually Defined Daily Doses)
-#' @param ... Grouping variables
-#' @param tall If TRUE (default) outputs data in tall format
+#' @param df Data frame.
+#' @param atc ATC code.
+#' @param ddd Amount (usually Defined Daily Doses).
+#' @param ... Grouping variables.
+#' @param tall If TRUE (default) outputs data in tall format.
+#' @param method 'dk' (default) or 'who' indicating the AWaRe classification to
+#'        be used.
 #'
 #' @return A data frame.
 #' @export
@@ -22,19 +24,22 @@ utils::globalVariables(c(
 #' awr_aggregate(abx_sales, atc, ddd)
 #' awr_aggregate(abx_sales, atc, addd)
 #' awr_aggregate(abx_sales, atc, ddd, region)
-#' awr_aggregate(abx_sales, atc, ddd, region, tall = FALSE)
+#' awr_aggregate(abx_sales, atc, ddd, region, tall = TRUE)
 #' awr_aggregate(abx_sales, atc, ddd, month)
 #' awr_aggregate(abx_sales, atc, ddd, month, region)
 #' awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
-
+#' awr_aggregate(abx_days, atc, n, month, hosp)
 awr_aggregate <- function(df,
                           atc = atc,
                           ddd = ddd,
                           ...,
-                          tall = FALSE) {
+                          tall = FALSE,
+                          method = c('dk', 'who')) {
+  method <- paste0('aware_', match.arg(method))
   d <- df %>%
     dplyr::mutate(atc = {{ atc }}) %>%
     dplyr::left_join(abx_aware, by = 'atc')  %>%
+    dplyr::mutate(aware = !! rlang::sym(method)) %>%
     dplyr::group_by(aware, ...) %>%
     dplyr::summarise('{{ddd}}' := sum({{ ddd }}),
                      .groups    = 'drop') %>%
@@ -44,15 +49,16 @@ awr_aggregate <- function(df,
     dplyr::mutate(total = sum({{ ddd }}, na.rm = TRUE),
                   p     = {{ ddd }} / total) %>%
     dplyr::ungroup() %>%
+    dplyr::mutate(aware = forcats::fct_explicit_na(aware, 'other'),
+                  aware = forcats::fct_relevel(aware, 'other')) %>%
     dplyr::filter(total > 0)
 
   if(!tall) {
     d <- d %>%
       dplyr::select(-p) %>%
-      dplyr::mutate(aware = forcats::fct_explicit_na(aware, 'missing')) %>%
       tidyr::pivot_wider(names_from = aware,
-                         values_from = {{ ddd }}) %>%
-      tidyr::replace_na(list(missing = 0))
+                         values_from = {{ ddd }},
+                         values_fill = 0)
   }
 
   d
@@ -65,10 +71,12 @@ awr_aggregate <- function(df,
 #' @param ddd Amount.
 #' @param time Time period.
 #' @param unit Organisational unit.
-#' @param na.rm Logical, remove missing values?
 #' @param ncol Integer, number of columns in faceted plots.
-#' @param legend.position Character, where to put legend (e.g. 'none', 'right', 'bottom')
-#' @param ... Other arguments to ggplot()
+#' @param legend.position Character, where to put legend (e.g. 'none', 'right',
+#'        'bottom').
+#' @param method 'dk' (default) or 'who' indicating the AWaRe classification to
+#'        be used.
+#' @param ... Other arguments to ggplot().
 #'
 #' @return A ggplot object.
 #' @export
@@ -76,32 +84,32 @@ awr_aggregate <- function(df,
 #' @examples
 #' awr_plot(abx_sales, atc, ddd)
 #' awr_plot(abx_sales, atc, addd)
-#' awr_plot(abx_sales, atc, addd, na.rm = TRUE)
 #' awr_plot(abx_sales, atc, ddd, unit = region)
 #' awr_plot(abx_sales, atc, ddd, time = month)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = region)
-#' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital,
-#'          ncol = 4, na.rm = TRUE, legend.position = 'none')
-#' awr_plot(abx_days, atc, n, time = month, unit = hosp)
+#' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
+#' awr_plot(abx_days, atc, n, time = month)
 awr_plot <- function(df,
                      atc             = atc,
                      ddd             = ddd,
                      time            = NULL,
                      unit            = NULL,
-                     na.rm           = FALSE,
                      ncol            = NULL,
                      legend.position = NULL,
+                     method = c('dk', 'who'),
                      ...) {
-
-  col_red   <- '#F07E6E'
-  col_amber <- '#FBB258'
-  col_green <- '#90CD97'
+  cols <- c('other'   = 'grey90',
+            'access'  = '#90CD97', #
+            'watch'   = '#FBB258', # amber
+            'reserve' = '#F07E6E'  # red
+  )
 
   d <- awr_aggregate(df,
                      {{ atc }},
                      {{ ddd }},
                      {{ time }},
                      {{ unit }},
+                     method = method,
                      tall = TRUE)
 
   if(missing(time)) {
@@ -131,18 +139,16 @@ awr_plot <- function(df,
       ggplot2::geom_area()
 
     if(!missing(unit) )
-      p <- p + ggplot2::facet_wrap(ggplot2::vars({{ unit }}), ncol = ncol)
+      p <- p + ggplot2::facet_wrap(ggplot2::vars({{ unit }}),
+                                   ncol = ncol)
   }
 
   p <- p +
     ggplot2::theme_minimal() +
-    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+    ggplot2::theme(panel.grid      = ggplot2::element_blank(),
                    legend.position = legend.position) +
     ggplot2::scale_y_continuous(labels = scales::percent) +
-    ggplot2::scale_fill_manual(values = c(col_red,
-                                          col_amber,
-                                          col_green),
-                               na.translate = !na.rm) +
+    ggplot2::scale_fill_manual(values = cols) +
     ggplot2::labs(y    = NULL,
                   fill = NULL)
 

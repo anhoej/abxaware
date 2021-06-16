@@ -5,11 +5,12 @@
 \alias{abx_aware}
 \title{AWaRe classification of ATC codes.}
 \format{
-A data frame with 318 rows and 3 variables:
+A data frame with 318 rows and 4 variables:
 \describe{
 \item{atc}{ATC code, character}
-\item{text}{Drug name, character}
-\item{aware}{AWaRe group, access, watch or reserve, factor}
+\item{generic_name}{Drug name, character}
+\item{aware_who}{AWaRe group, access, watch or reserve, factor}
+\item{aware_dk}{AWaRe group adjusted to Danish guidelines}
 }
 }
 \source{

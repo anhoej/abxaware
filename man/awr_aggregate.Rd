@@ -4,18 +4,28 @@
 \alias{awr_aggregate}
 \title{Aggregate antibiotic usage data by AWaRe group}
 \usage{
-awr_aggregate(df, atc = atc, ddd = ddd, ..., tall = FALSE)
+awr_aggregate(
+  df,
+  atc = atc,
+  ddd = ddd,
+  ...,
+  tall = FALSE,
+  method = c("dk", "who")
+)
 }
 \arguments{
-\item{df}{Data frame}
+\item{df}{Data frame.}
 
-\item{atc}{ATC code}
+\item{atc}{ATC code.}
 
-\item{ddd}{Amount (usually Defined Daily Doses)}
+\item{ddd}{Amount (usually Defined Daily Doses).}
 
-\item{...}{Grouping variables}
+\item{...}{Grouping variables.}
 
-\item{tall}{If TRUE (default) outputs data in tall format}
+\item{tall}{If TRUE (default) outputs data in tall format.}
+
+\item{method}{'dk' (default) or 'who' indicating the AWaRe classification to
+be used.}
 }
 \value{
 A data frame.
@@ -28,8 +38,9 @@ awr_aggregate(abx_sales)
 awr_aggregate(abx_sales, atc, ddd)
 awr_aggregate(abx_sales, atc, addd)
 awr_aggregate(abx_sales, atc, ddd, region)
-awr_aggregate(abx_sales, atc, ddd, region, tall = FALSE)
+awr_aggregate(abx_sales, atc, ddd, region, tall = TRUE)
 awr_aggregate(abx_sales, atc, ddd, month)
 awr_aggregate(abx_sales, atc, ddd, month, region)
 awr_aggregate(abx_sales, atc, ddd, month, region, hospital)
+awr_aggregate(abx_days, atc, n, month, hosp)
 }

@@ -10,9 +10,9 @@ awr_plot(
   ddd = ddd,
   time = NULL,
   unit = NULL,
-  na.rm = FALSE,
   ncol = NULL,
   legend.position = NULL,
+  method = c("dk", "who"),
   ...
 )
 }
@@ -27,13 +27,15 @@ awr_plot(
 
 \item{unit}{Organisational unit.}
 
-\item{na.rm}{Logical, remove missing values?}
-
 \item{ncol}{Integer, number of columns in faceted plots.}
 
-\item{legend.position}{Character, where to put legend (e.g. 'none', 'right', 'bottom')}
+\item{legend.position}{Character, where to put legend (e.g. 'none', 'right',
+'bottom').}
 
-\item{...}{Other arguments to ggplot()}
+\item{method}{'dk' (default) or 'who' indicating the AWaRe classification to
+be used.}
+
+\item{...}{Other arguments to ggplot().}
 }
 \value{
 A ggplot object.
@@ -44,11 +46,9 @@ Plot AWaRe data
 \examples{
 awr_plot(abx_sales, atc, ddd)
 awr_plot(abx_sales, atc, addd)
-awr_plot(abx_sales, atc, addd, na.rm = TRUE)
 awr_plot(abx_sales, atc, ddd, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month)
 awr_plot(abx_sales, atc, ddd, time = month, unit = region)
-awr_plot(abx_sales, atc, ddd, time = month, unit = hospital,
-         ncol = 4, na.rm = TRUE, legend.position = 'none')
-awr_plot(abx_days, atc, n, time = month, unit = hosp)
+awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
+awr_plot(abx_days, atc, n, time = month)
 }
