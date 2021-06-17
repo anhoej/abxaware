@@ -41,11 +41,11 @@ Plot AWaRe data
 }
 \examples{
 awr_plot(abx_sales, atc, ddd)
-awr_plot(abx_sales, atc, addd)
 awr_plot(abx_sales, atc, ddd, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month)
 awr_plot(abx_sales, atc, ddd, time = month, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
-awr_plot(abx_days, atc, n, time = month)
+awr_plot(abx_days, atc, days, time = month)
+awr_plot(abx_days, atc, days, time = month, ignore.other = TRUE)
 
 }

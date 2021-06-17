@@ -11,11 +11,8 @@ A data frame with 8441 rows and 5 variables:
 \item{month}{Month, date}
 \item{atc}{ATC code, character}
 \item{drug}{Drug name, character}
-\item{n}{Number of antibiotic treatment days, 1 patient x 1 drug = 1 day}
+\item{days}{Number of antibiotic treatment days, 1 patient x 1 drug = 1 day}
 }
-}
-\source{
-\url{https://regionh.dk/}
 }
 \usage{
 abx_days

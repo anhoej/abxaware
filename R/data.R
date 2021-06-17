@@ -24,7 +24,6 @@
 #'   \item{atc}{ATC code, character}
 #'   \item{drug}{Drug name, character}
 #'   \item{ddd}{Amount purchased, Defined Daily Dosages (DDD)}
-#'   \item{addd}{Amount purchased, DDDs adjusted to Danish recommendations}
 #' }
 #' @source \url{https://amgros.dk/}
 "abx_sales"
@@ -40,7 +39,6 @@
 #'   \item{month}{Month, date}
 #'   \item{atc}{ATC code, character}
 #'   \item{drug}{Drug name, character}
-#'   \item{n}{Number of antibiotic treatment days, 1 patient x 1 drug = 1 day}
+#'   \item{days}{Number of antibiotic treatment days, 1 patient x 1 drug = 1 day}
 #' }
-#' @source \url{https://regionh.dk/}
 "abx_days"

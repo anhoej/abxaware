@@ -13,7 +13,6 @@ A data frame with 47551 rows and 7 variables:
 \item{atc}{ATC code, character}
 \item{drug}{Drug name, character}
 \item{ddd}{Amount purchased, Defined Daily Dosages (DDD)}
-\item{addd}{Amount purchased, DDDs adjusted to Danish recommendations}
 }
 }
 \source{
