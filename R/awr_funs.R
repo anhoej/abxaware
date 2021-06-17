@@ -115,11 +115,6 @@ awr_plot <- function(df,
                      legend.position = NULL,
                      # method = c('dk', 'who'),
                      ...) {
-  cols <- c('other'   = 'grey90',
-            'reserve' = '#F07E6E', # red
-            'watch'   = '#FBB258', # amber
-            'access'  = '#90CD97'  # green
-  )
 
   d <- awr_aggregate(df,
                      {{ atc }},
@@ -128,6 +123,16 @@ awr_plot <- function(df,
                      {{ unit }},
                      tall = TRUE,
                      ...)
+
+  cols <- c(
+    'reserve' = '#F07E6E', # red
+    'watch'   = '#FBB258', # amber
+    'access'  = '#90CD97'  # green
+  )
+
+  if('other' %in% levels(d$aware)) {
+    cols <- c('other' = 'grey90', cols)
+  }
 
   if(missing(time)) {
     if(missing(unit) ) {
