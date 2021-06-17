@@ -116,9 +116,9 @@ awr_plot <- function(df,
                      # method = c('dk', 'who'),
                      ...) {
   cols <- c('other'   = 'grey90',
-            'access'  = '#90CD97', # green
+            'reserve' = '#F07E6E', # red
             'watch'   = '#FBB258', # amber
-            'reserve' = '#F07E6E'  # red
+            'access'  = '#90CD97'  # green
   )
 
   d <- awr_aggregate(df,
