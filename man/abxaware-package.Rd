@@ -6,7 +6,8 @@
 \alias{abxaware-package}
 \title{abxaware: AWaRe classification of Antibiotic Usage Data}
 \description{
-Aggregate and plot antibiotic usage data by access, watch, and reserve (AWaRe) groups.
+Aggregate and plot antibiotic usage data by access, watch, and reserve
+  (AWaRe) groups.
 }
 \author{
 \strong{Maintainer}: Jacob Anhøj \email{jacob@anhoej.net} (\href{https://orcid.org/0000-0002-7701-1774}{ORCID})

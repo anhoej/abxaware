@@ -45,6 +45,7 @@ awr_aggregate <- function(df,
     rlang::sym()
 
   d <- df %>%
+    dplyr::select({{ atc }}, {{ ddd }}, ...) %>%
     dplyr::mutate(atc = {{ atc }}) %>%
     dplyr::left_join(abx_aware, by = 'atc') %>%
     dplyr::mutate(aware = !!method)

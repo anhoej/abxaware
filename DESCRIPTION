@@ -12,7 +12,9 @@ Authors@R:
              role = c("aut"),
              email = "",
              comment = c(ORCID = "0000-0003-3085-0930")))
-Description: Aggregate and plot antibiotic usage data by access, watch, and reserve (AWaRe) groups.
+Description: 
+  Aggregate and plot antibiotic usage data by access, watch, and reserve
+  (AWaRe) groups.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
