@@ -16,6 +16,7 @@ utils::globalVariables(c(
 #' @param method 'dk' (default) or 'who' indicating the AWaRe classification to
 #'        be used.
 #' @param ignore.other If TRUE, ignores drugs that have no AWaRe class.
+#' @param silent If TRUE, prints method.
 #'
 #' @return A data frame.
 #' @export
@@ -35,10 +36,13 @@ awr_aggregate <- function(df,
                           ...,
                           tall         = FALSE,
                           method       = c('dk', 'who'),
-                          ignore.other = FALSE) {
-  message(paste0('Aggregating data using the "',
-                 match.arg(method),
-                 '" AWaRe classification'))
+                          ignore.other = FALSE,
+                          silent       = FALSE) {
+  if(!silent) {
+    message(paste0('Aggregating data using the "',
+                   match.arg(method),
+                   '" AWaRe classification'))
+  }
 
   method <- paste0('aware_',
                    match.arg(method)) %>%
