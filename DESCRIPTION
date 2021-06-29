@@ -31,3 +31,7 @@ Imports:
     ggplot2,
     scales,
     utils
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

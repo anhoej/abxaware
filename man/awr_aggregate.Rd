@@ -11,7 +11,8 @@ awr_aggregate(
   ...,
   tall = FALSE,
   method = c("dk", "who"),
-  ignore.other = FALSE
+  ignore.other = FALSE,
+  silent = FALSE
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ awr_aggregate(
 be used.}
 
 \item{ignore.other}{If TRUE, ignores drugs that have no AWaRe class.}
+
+\item{silent}{If TRUE, prints method.}
 }
 \value{
 A data frame.
