@@ -1,11 +1,3 @@
-utils::globalVariables(c(
-  ':=',
-  'abx_aware',
-  'aware',
-  'total',
-  'p'
-))
-
 #' Aggregate antibiotic usage data by AWaRe group
 #'
 #' @param df Data frame.
@@ -14,7 +6,8 @@ utils::globalVariables(c(
 #' @param ... Grouping variables.
 #' @param tall If TRUE (default) outputs data in tall format.
 #' @param method 'dk' (default) or 'who' indicating the AWaRe classification to
-#'        be used.
+#'        be used. The default may be changed within an R session using
+#'         `options(abxaware.method = 'who')`.
 #' @param ignore.other If TRUE, ignores drugs that have no AWaRe class.
 #' @param silent If TRUE, prints method.
 #'
@@ -35,17 +28,21 @@ awr_aggregate <- function(df,
                           ddd          = ddd,
                           ...,
                           tall         = FALSE,
-                          method       = c('dk', 'who'),
+                          # method       = c('dk', 'who'),
+                          method       = getOption('abxaware.method', 'dk'),
                           ignore.other = FALSE,
                           silent       = FALSE) {
   if(!silent) {
     message(paste0('Aggregating data using the "',
-                   match.arg(method),
+                   # match.arg(method),
+                   method,
                    '" AWaRe classification'))
   }
 
   method <- paste0('aware_',
-                   match.arg(method)) %>%
+                   # match.arg(method)
+                   method
+                   ) %>%
     rlang::sym()
 
   d <- df %>%
@@ -181,3 +178,20 @@ awr_plot <- function(df,
 
   p
 }
+
+
+.onAttach <- function(libname, pkgname) {
+  options(abxaware.method = 'dk')
+}
+
+.onDetach <- function(libpath) {
+  options(abxaware.method = NULL)
+}
+
+utils::globalVariables(c(
+  ':=',
+  'abx_aware',
+  'aware',
+  'total',
+  'p'
+))

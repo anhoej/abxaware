@@ -35,15 +35,15 @@ AWaRe was introduced in 2017 as a new categorization of antibiotics to guide pre
 
 * **Access** which indicates the antibiotic of choice for each of the 25 most common infections. These antibiotics should be available at all times, affordable and quality-assured.
 
-* **Watch** which includes most of the “highest-priority critically important antimicrobials” for human medicine and veterinary use. These antibiotics are recommended only for specific, limited indications.
+* **Watch** which includes most of the "highest-priority critically important antimicrobials" for human medicine and veterinary use. These antibiotics are recommended only for specific, limited indications.
 
 * **Reserve** antibiotics that should only be used as a last resort when all other antibiotics have failed.
 
 WHO suggests that countries should increase the proportion of access antibiotics to correspond to at least 60% of total national consumption
 
-`abxaware` is an R package that contains a complete list of antibacterial drugs for systemic use (ATC groups J01) and the corresponding AWaRe classification plus two functions to aggregate and visualise antibiotic use according to AWaRe.
+`abxaware` is an R package that contains a list of antibacterial drugs for systemic use (ATC group J01) and the corresponding AWaRe classification plus functions to aggregate and visualise antibiotic use according to AWaRe.
 
-The classification data frame (abx_aware, see Appendix) holds both the latest 2019 WHO classification and our own adaptation to Danish guidelines. In the Danish classification, two drugs have been moved up one level: amoxicillin and beta-lactamase inhibitor from access to watch and meropenem from watch to reserve. Additionally, some drugs that are unclassified by WHO are included in the Danish AWaRe classification in order to cover nearly all antibiotics used in Danish hospitals.
+The classification data frame (`abx_aware`, see Appendix) contains both the latest 2019 WHO classification and our own adaptation to Danish guidelines. In the Danish classification, which is default in `abxaware` functions, two drugs have been moved up one level: amoxicillin and beta-lactamase inhibitor from access to watch and meropenem from watch to reserve. Additionally, some drugs that are unclassified by WHO are included in the Danish AWaRe classification in order to cover nearly all antibiotics used in Danish hospitals.
 
 
 ```{r, echo=FALSE, fig.height=1.5}
@@ -57,7 +57,7 @@ awr_plot(abx_sales,
 
 ## Preparing data
 
-To create a plot like the one above, you need a data frame with at least two columns: ATC code and amount. The ATC code is the unique drug identifier, and the amount variable is the amount of drug with this ATC code used. Amount is normally given in defined daily dose (DDD) units, but other measures may be used. Additionally, the data frame may include variables for time period and organisational unit allowing for creation of faceted time series plots. Note that only drugs with a complete ATC code with 7 characters can be classified, and that not all drugs have been classified. Unclassifiable drugs appear in the outputs as "other".
+To create a plot like the one above, you need a data frame with at least two columns: ATC code and amount. The ATC code is the unique drug identifier, and the amount variable is the amount of drug with this ATC code used. Amount is normally given in defined daily dose (DDD) units, but other measures may be used. Additionally, the data frame may include variables for time period and organisational unit allowing for creation of faceted time series plots. Note that only drugs with a complete ATC code with 7 characters can be classified, and that not all drugs have been classified. Unclassifiable drugs appear in the outputs as "other" unless `ignore.other = TRUE`.
 
 `abxaware` contains two example data frames: `abx_sales` and `abx_days`. See the help pages for details.
 
@@ -118,12 +118,14 @@ awr_plot(abx_sales,
          ncol = 2)
 ```
 
-Note that `awr_plot()` prints a message telling which classification was used, WHO or DK. By default, the DK classification is used. But the method can be specified using the method argument.
+Note that `awr_plot()` prints a message telling which classification was used, WHO or DK. By default, the DK classification is used. But the method can be specified using the `method` argument.
 
 ```{r, fig.height=1.5}
 awr_plot(abx_sales, method = 'dk')
 awr_plot(abx_sales, method = 'who')
 ```
+
+Also, the default method for an R session may be specified as an option, for example: `options(abxaware.method = 'who')`.
 
 To add title, subtitle, caption etc. to a plot, use the `labs` function from `ggplot2`. See `?awr_plot` for details on other arguments.
 
@@ -164,6 +166,16 @@ awr_aggregate(abx_sales,
               hospital,
               month)
 ```
+
+## References
+
+* World Health Organisation (2019). Adopt AWaRe. https://adoptaware.org/
+
+* Mike Sharland et al. (2019). Encouraging AWaRe-ness and discouraging inappropriate antibiotic use -- the new 2019 Essential Medicines List becomes a global antibiotic stewardship tool. Lancet Infect Dis. 2019. https://doi.org/10.1016/s1473-3099(19)30532-8.
+
+* Emma Budd et al. (2019). Adaptation of the WHO Essential Medicines List for national antibiotic stewardship policy in England: being AWaRe, Journal of Antimicrobial Chemotherapy. https://doi.org/10.1093/jac/dkz321
+
+* Ines Pauwels et al. (2021). Hospital antibiotic prescribing patterns in adult patients according to the WHO Access, Watch and Reserve classification (AWaRe): results from a worldwide point prevalence survey in 69 countries, Journal of Antimicrobial Chemotherapy. https://doi.org/10.1093/jac/dkab050
 
 ## Appendix: Table for mapping ATC codes to AWaRe groups
 ```{r, echo=FALSE}

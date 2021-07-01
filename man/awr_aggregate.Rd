@@ -10,7 +10,7 @@ awr_aggregate(
   ddd = ddd,
   ...,
   tall = FALSE,
-  method = c("dk", "who"),
+  method = getOption("abxaware.method", "dk"),
   ignore.other = FALSE,
   silent = FALSE
 )
@@ -27,7 +27,8 @@ awr_aggregate(
 \item{tall}{If TRUE (default) outputs data in tall format.}
 
 \item{method}{'dk' (default) or 'who' indicating the AWaRe classification to
-be used.}
+be used. The default may be changed within an R session using
+\code{options(abxaware.method = 'who')}.}
 
 \item{ignore.other}{If TRUE, ignores drugs that have no AWaRe class.}
 
