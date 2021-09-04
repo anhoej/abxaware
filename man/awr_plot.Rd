@@ -45,5 +45,4 @@ awr_plot(abx_sales, atc, ddd, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month)
 awr_plot(abx_sales, atc, ddd, time = month, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
-
 }

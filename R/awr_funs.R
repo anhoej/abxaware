@@ -1,3 +1,19 @@
+# runs analysis
+runs.analysis <- function(x, cl) {
+  runs            <- sign(x - cl)
+  runs            <- runs[runs != 0 & !is.na(runs)]
+  run.lengths     <- rle(runs)$lengths
+  n.useful        <- sum(run.lengths)
+  longest.run     <- max(run.lengths)
+  n.crossings     <- length(run.lengths) - 1
+  longest.run.max <- round(log2(n.useful)) + 3
+  n.crossings.min <- stats::qbinom(0.05, n.useful - 1, 0.5)
+  runs.signal     <- longest.run > longest.run.max |
+    n.crossings < n.crossings.min
+
+  runs.signal
+}
+
 #' Aggregate antibiotic usage data by AWaRe group
 #'
 #' @param df Data frame.
@@ -42,7 +58,7 @@ awr_aggregate <- function(df,
   method <- paste0('aware_',
                    # match.arg(method)
                    method
-                   ) %>%
+  ) %>%
     rlang::sym()
 
   d <- df %>%
@@ -112,7 +128,6 @@ awr_plot <- function(df,
                      unit            = NULL,
                      ncol            = NULL,
                      legend.position = NULL,
-                     # method = c('dk', 'who'),
                      ...) {
 
   d <- awr_aggregate(df,
@@ -153,11 +168,24 @@ awr_plot <- function(df,
            call. = FALSE)
     }
 
+    d.access <- d %>%
+      dplyr::filter(aware == 'access') %>%
+      dplyr::group_by({{ unit }}) %>%
+      dplyr::mutate(cl = stats::median(p),
+                    ra = runs.analysis(p, cl))
+
     p <- ggplot2::ggplot(d,
                          ggplot2::aes(x    = {{ time }},
                                       y    = p,
                                       fill = aware)) +
-      ggplot2::geom_area()
+      ggplot2::geom_area() +
+      ggplot2::geom_line(ggplot2::aes(x        = {{ time }},
+                                      y        = cl,
+                                      linetype = ra),
+                         data = d.access,
+                         colour = 'gray50') +
+      ggplot2::scale_linetype_manual(values = c('FALSE' = 'solid',
+                                                'TRUE' = 'dashed'))
 
     if(!missing(unit) )
       p <- p + ggplot2::facet_wrap(ggplot2::vars({{ unit }}),
@@ -176,7 +204,6 @@ awr_plot <- function(df,
   p
 }
 
-
 .onAttach <- function(libname, pkgname) {
   options(abxaware.method = 'dk')
 }
@@ -190,5 +217,7 @@ utils::globalVariables(c(
   'abx_aware',
   'aware',
   'total',
-  'p'
+  'p',
+  'cl',
+  'ra'
 ))
