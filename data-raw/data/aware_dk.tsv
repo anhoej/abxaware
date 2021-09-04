@@ -1,0 +1,319 @@
+atc	drug	aware_dk
+J01	ANTIBACTERIALS FOR SYSTEMIC USE	NA
+J01A	Tetracycline antibiotics	NA
+J01AA	Tetracyclines	NA
+J01AA01	demeclocycline	NA
+J01AA02	doxycycline	access
+J01AA03	chlortetracycline	watch
+J01AA04	lymecycline	watch
+J01AA05	metacycline	watch
+J01AA06	oxytetracycline	watch
+J01AA07	tetracycline	access
+J01AA08	minocycline	reserve
+J01AA09	rolitetracycline	NA
+J01AA10	penimepicycline	NA
+J01AA11	clomocycline	NA
+J01AA12	tigecycline	reserve
+J01AA13	eravacycline	reserve
+J01AA14	sarecycline	NA
+J01AA15	omadacycline	NA
+J01AA20	combinations of tetracyclines	NA
+J01AA56	oxytetracycline, combinations	NA
+J01B	AMPHENICOLS	NA
+J01BA	Amphenicol antibacterials, systemic	NA
+J01BA01	chloramphenicol	access
+J01BA02	thiamphenicol	access
+J01BA52	thiamphenicol, combinations	NA
+J01C	BETA-LACTAM ANTIBACTERIALS, PENICILLINS	NA
+J01CA	Penicillins with extended spectrum	NA
+J01CA01	ampicillin	access
+J01CA02	pivampicillin	access
+J01CA03	carbenicillin	watch
+J01CA04	amoxicillin	access
+J01CA05	carindacillin	NA
+J01CA06	bacampicillin	access
+J01CA07	epicillin	NA
+J01CA08	pivmecillinam	access
+J01CA09	azlocillin	watch
+J01CA10	mezlocillin	watch
+J01CA11	mecillinam	access
+J01CA12	piperacillin	watch
+J01CA13	ticarcillin	watch
+J01CA14	metampicillin	NA
+J01CA15	talampicillin	NA
+J01CA16	sulbenicillin	watch
+J01CA17	temocillin	watch
+J01CA18	hetacillin	NA
+J01CA19	aspoxicillin	NA
+J01CA20	Penicillins with extended spectrum combinations	NA
+J01CA51	ampicillin, combinations	NA
+J01CE	Beta-lactamase sensitive penicillins	NA
+J01CE01	benzylpenicillin	access
+J01CE02	phenoxymethylpenicillin	access
+J01CE03	propicillin	NA
+J01CE04	azidocillin	NA
+J01CE05	pheneticillin	watch
+J01CE06	penamecillin	access
+J01CE07	clometocillin	access
+J01CE08	benzathine benzylpenicillin	access
+J01CE09	procaine benzylpenicillin	access
+J01CE10	benzathine phenoxymethylpenicillin	NA
+J01CE30	Beta-lactamase sensitive penicillin combinations	NA
+J01CF	Beta-lactamase resistant penicillins	NA
+J01CF01	dicloxacillin	access
+J01CF02	cloxacillin	access
+J01CF03	meticillin	NA
+J01CF04	oxacillin	access
+J01CF05	flucloxacillin	access
+J01CF06	nafcillin	access
+J01CG	Beta-lactamase inhibitors, systemic penicillins	NA
+J01CG01	sulbactam	NA
+J01CG02	tazobactam	NA
+J01CR	Combinations of penicillins, incl. beta-lactamase inhibitors	NA
+J01CR01	ampicillin and beta-lactamase inhibitor	access
+J01CR02	amoxicillin and beta-lactamase inhibitor	watch
+J01CR03	ticarcillin and beta-lactamase inhibitor	NA
+J01CR04	sultamicillin	access
+J01CR05	piperacillin and beta-lactamase inhibitor	watch
+J01CR50	combinations of penicillins	NA
+J01D	OTHER BETA-LACTAM ANTIBACTERIALS in ATC	NA
+J01DB	First-generation cephalosporins	NA
+J01DB01	cefalexin	access
+J01DB02	cefaloridine	NA
+J01DB03	cefalotin	access
+J01DB04	cefazolin	access
+J01DB05	cefadroxil	access
+J01DB06	cefazedone	access
+J01DB07	cefatrizine	access
+J01DB08	cefapirin	access
+J01DB09	cefradine	access
+J01DB10	cefacetrile	access
+J01DB11	cefroxadine	access
+J01DB12	ceftezole	access
+J01DC	Second-generation cephalosporins	NA
+J01DC01	cefoxitin	watch
+J01DC02	cefuroxime	watch
+J01DC03	cefamandole	watch
+J01DC04	cefaclor	watch
+J01DC05	cefotetan	watch
+J01DC06	cefonicid	watch
+J01DC07	cefotiam	watch
+J01DC08	loracarbef	NA
+J01DC09	cefmetazole	watch
+J01DC10	cefprozil	watch
+J01DC11	ceforanide	watch
+J01DC12	cefminox	watch
+J01DC13	cefbuperazone	watch
+J01DC14	flomoxef	watch
+J01DD	Third-generation cephalosporins	NA
+J01DD01	cefotaxime	watch
+J01DD02	ceftazidime	watch
+J01DD03	cefsulodin	NA
+J01DD04	ceftriaxone	watch
+J01DD05	cefmenoxime	watch
+J01DD06	latamoxef	watch
+J01DD07	ceftizoxime	watch
+J01DD08	cefixime	watch
+J01DD09	cefodizime	watch
+J01DD10	cefetamet	watch
+J01DD11	cefpiramide	watch
+J01DD12	cefoperazone	watch
+J01DD13	cefpodoxime	watch
+J01DD14	ceftibuten	watch
+J01DD15	cefdinir	watch
+J01DD16	cefditoren	watch
+J01DD17	cefcapene	watch
+J01DD18	cefteram	watch
+J01DD51	cefotaxime and beta-lactamase inhibitor	NA
+J01DD52	ceftazidime and beta-lactamase inhibitor	reserve
+J01DD54	ceftriaxone, combinations	NA
+J01DD62	cefoperazone and beta-lactamase inhibitor	NA
+J01DD63	ceftriaxone and beta-lactamase inhibitor	NA
+J01DD64	cefpodoxime and beta-lactamase inhibitor	NA
+J01DE	Fourth-generation cephalosporins	NA
+J01DE01	cefepime	watch
+J01DE02	cefpirome	watch
+J01DE03	cefozopran	watch
+J01DF	Monobactams	NA
+J01DF01	aztreonam	reserve
+J01DF02	carumonam	NA
+J01DH	Carbapenems	NA
+J01DH02	meropenem	reserve
+J01DH03	ertapenem	watch
+J01DH04	doripenem	watch
+J01DH05	biapenem	watch
+J01DH06	tebipenem pivoxil	watch
+J01DH51	imipenem and cilastatin	watch
+J01DH52	meropenem and vaborbactam	reserve
+J01DH55	panipenem and betamipron	NA
+J01DH56	imipenem, cilastatin and relebactam	NA
+J01DI	Other cephalosporins and penems in ATC	NA
+J01DI01	ceftobiprole medocaril	reserve
+J01DI02	ceftaroline fosamil	reserve
+J01DI03	faropenem	reserve
+J01DI04	cefiderocol	NA
+J01DI54	ceftolozane and beta-lactamase inhibitor	reserve
+J01E	SULFONAMIDES AND TRIMETHOPRIM ANTIBACTERIALS FOR SYSTEMIC USE	NA
+J01EA	Trimethoprim and derivatives, systemic antibacterials	NA
+J01EA01	trimethoprim	access
+J01EA02	brodimoprim	NA
+J01EA03	iclaprim	NA
+J01EB	Short-acting sulfonamides	NA
+J01EB01	sulfaisodimidine	NA
+J01EB02	sulfamethizole	access
+J01EB03	sulfadimidine	NA
+J01EB04	sulfapyridine	access
+J01EB05	sulfafurazole	NA
+J01EB06	sulfanilamide	NA
+J01EB07	sulfathiazole	NA
+J01EB08	sulfathiourea	NA
+J01EB20	Short-acting sulfonamide combinations	NA
+J01EC	Intermediate-acting sulfonamides	NA
+J01EC01	sulfamethoxazole	NA
+J01EC02	sulfadiazine	access
+J01EC03	sulfamoxole	NA
+J01EC20	Intermediate-acting sulfonamide combinations	NA
+J01ED	Long-acting sulfonamides	NA
+J01ED01	sulfadimethoxine	NA
+J01ED02	sulfalene	NA
+J01ED03	sulfametomidine	NA
+J01ED04	sulfametoxydiazine	NA
+J01ED05	sulfamethoxypyridazine	NA
+J01ED06	sulfaperin	NA
+J01ED07	sulfamerazine	NA
+J01ED08	sulfaphenazole	NA
+J01ED09	sulfamazone	NA
+J01ED20	Long-acting sulfonamide combinations	NA
+J01EE	Combinations of sulfonamides and trimethoprim, incl. derivatives	NA
+J01EE01	sulfamethoxazole and trimethoprim	access
+J01EE02	sulfadiazine and trimethoprim	access
+J01EE03	sulfametrole and trimethoprim	access
+J01EE04	sulfamoxole and trimethoprim	access
+J01EE05	sulfadimidine and trimethoprim	NA
+J01EE06	sulfadiazine and tetroxoprim	NA
+J01EE07	sulfamerazine and trimethoprim	NA
+J01F	MACROLIDES, LINCOSAMIDES AND STREPTOGRAMINS	NA
+J01FA	Macrolides	NA
+J01FA01	erythromycin	watch
+J01FA02	spiramycin	watch
+J01FA03	midecamycin	watch
+J01FA05	oleandomycin	watch
+J01FA06	roxithromycin	watch
+J01FA07	josamycin	watch
+J01FA08	troleandomycin	NA
+J01FA09	clarithromycin	watch
+J01FA10	azithromycin	watch
+J01FA11	miocamycin	NA
+J01FA12	rokitamycin	NA
+J01FA13	dirithromycin	watch
+J01FA14	flurithromycin	NA
+J01FA15	telithromycin	watch
+J01FA16	solithromycin	NA
+J01FF	Lincosamides	NA
+J01FF01	clindamycin	access
+J01FF02	lincomycin	watch
+J01FG	Streptogramins	NA
+J01FG01	pristinamycin	watch
+J01FG02	quinupristin/dalfopristin	reserve
+J01G	AMINOGLYCOSIDE ANTIBACTERIALS	NA
+J01GA	Streptomycins	NA
+J01GA01	streptomycin	watch
+J01GA02	streptoduocin	NA
+J01GB	Other aminoglycosides in ATC	NA
+J01GB01	tobramycin	watch
+J01GB03	gentamicin	access
+J01GB04	kanamycin	watch
+J01GB05	neomycin	watch
+J01GB06	amikacin	access
+J01GB07	netilmicin	watch
+J01GB08	sisomicin	watch
+J01GB09	dibekacin	watch
+J01GB10	ribostamycin	watch
+J01GB11	isepamicin	watch
+J01GB12	arbekacin	watch
+J01GB13	bekanamycin	NA
+J01GB14	plazomicin	NA
+J01M	QUINOLONE ANTIBACTERIALS	NA
+J01MA	Fluoroquinolone antibacterials, systemic	NA
+J01MA01	ofloxacin	watch
+J01MA02	ciprofloxacin	watch
+J01MA03	pefloxacin	watch
+J01MA04	enoxacin	watch
+J01MA05	temafloxacin	NA
+J01MA06	norfloxacin	watch
+J01MA07	lomefloxacin	watch
+J01MA08	fleroxacin	watch
+J01MA09	sparfloxacin	watch
+J01MA10	rufloxacin	watch
+J01MA11	grepafloxacin	NA
+J01MA12	levofloxacin	watch
+J01MA13	trovafloxacin	NA
+J01MA14	moxifloxacin	watch
+J01MA15	gemifloxacin	watch
+J01MA16	gatifloxacin	watch
+J01MA17	prulifloxacin	watch
+J01MA18	pazufloxacin	watch
+J01MA19	garenoxacin	watch
+J01MA21	sitafloxacin	watch
+J01MA22	tosufloxacin	watch
+J01MA23	delafloxacin	watch
+J01MA24	levonadifloxacin	NA
+J01MA25	lascufloxacin	NA
+J01MB	Other quinolones in ATC	NA
+J01MB01	rosoxacin	NA
+J01MB02	nalidixic acid	NA
+J01MB03	piromidic acid	NA
+J01MB04	pipemidic acid	NA
+J01MB05	oxolinic acid	NA
+J01MB06	cinoxacin	NA
+J01MB07	flumequine	watch
+J01MB08	nemonoxacin	NA
+J01R	COMBINATIONS OF ANTIBACTERIALS	NA
+J01RA	Combinations of antibacterials	NA
+J01RA01	penicillins, combinations with other antibacterials	NA
+J01RA02	sulfonamides, combinations with other antibacterials (excl. trimethoprim)	NA
+J01RA03	cefuroxime and metronidazole	NA
+J01RA04	spiramycin and metronidazole	watch
+J01RA05	levofloxacin and ornidazole	NA
+J01RA06	cefepime and amikacin	NA
+J01RA07	azithromycin, fluconazole and secnidazole	NA
+J01RA08	tetracycline and oleandomycin	NA
+J01RA09	ofloxacin and ornidazole	NA
+J01RA10	ciprofloxacin and metronidazole	NA
+J01RA11	ciprofloxacin and tinidazole	NA
+J01RA12	ciprofloxacin and ornidazole	NA
+J01RA13	norfloxacin and tinidazole	NA
+J01X	OTHER ANTIBACTERIALS in ATC	NA
+J01XA	Glycopeptide antibacterials	NA
+J01XA01	vancomycin	watch
+J01XA02	teicoplanin	watch
+J01XA03	telavancin	reserve
+J01XA04	dalbavancin	reserve
+J01XA05	oritavancin	reserve
+J01XB	Polymyxins	NA
+J01XB01	colistin	reserve
+J01XB02	polymyxin B	reserve
+J01XC	Steroid antibacterials	NA
+J01XC01	fusidic acid	watch
+J01XD	Imidazole derivatives, antibacterial for systemic use	NA
+J01XD01	metronidazole	access
+J01XD02	tinidazole	NA
+J01XD03	ornidazole	NA
+J01XE	Nitrofuran derivatives, antibacterials for systemic use	NA
+J01XE01	nitrofurantoin	access
+J01XE02	nifurtoinol	NA
+J01XE03	furazidin	NA
+J01XE51	nitrofurantoin, combinations	NA
+J01XX	Other antibacterials in ATC	NA
+J01XX01	fosfomycin	reserve
+J01XX02	xibornol	NA
+J01XX03	clofoctol	watch
+J01XX04	spectinomycin	access
+J01XX05	methenamine	NA
+J01XX06	mandelic acid	NA
+J01XX07	nitroxoline	NA
+J01XX08	linezolid	reserve
+J01XX09	daptomycin	reserve
+J01XX10	bacitracin	NA
+J01XX11	tedizolid	reserve
+J01XX12	lefamulin	NA

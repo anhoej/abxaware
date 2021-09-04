@@ -45,8 +45,5 @@ awr_plot(abx_sales, atc, ddd, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month)
 awr_plot(abx_sales, atc, ddd, time = month, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
-awr_plot(abx_days, atc, days, time = month)
-awr_plot(abx_days, atc, days, unit = hosp)
-awr_plot(abx_days, atc, days, unit = hosp, ignore.other = TRUE)
 
 }

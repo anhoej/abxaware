@@ -8,8 +8,12 @@
 A data frame with 318 rows and 4 variables:
 \describe{
 \item{atc}{ATC code, character}
+\item{atc_level}{ATC level, number}
 \item{generic_name}{Drug name, character}
-\item{aware_who}{AWaRe group, access, watch or reserve, factor}
+\item{aware_who}{AWaRe group, access, watch or reserve, factor,
+source: \url{https://www.who.int/publications/i/item/WHOEMPIAU2019.11}}
+\item{aware_uk}{AWaRe group from Budd 2019,
+source: \doi{https://doi.org/10.1093/jac/dkz321}}
 \item{aware_dk}{AWaRe group adjusted to Danish guidelines}
 }
 }
