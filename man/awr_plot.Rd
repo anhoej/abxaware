@@ -12,6 +12,7 @@ awr_plot(
   unit = NULL,
   ncol = NULL,
   legend.position = NULL,
+  runs.analysis = TRUE,
   ...
 )
 }
@@ -31,7 +32,11 @@ awr_plot(
 \item{legend.position}{Character, where to put legend (e.g. 'none', 'right',
 'bottom').}
 
-\item{...}{Other arguments to awr_aggregate() and ggplot().}
+\item{runs.analysis}{Logical, if TRUE (default) add runs analysis to plot.
+See Details.}
+
+\item{...}{Other arguments to \code{\link{awr_aggregate}} and
+\code{\link[ggplot2]{ggplot}}.}
 }
 \value{
 A ggplot object.
@@ -39,10 +44,24 @@ A ggplot object.
 \description{
 Plot AWaRe data
 }
+\details{
+The plot show the relative distribution of antibiotics in the three
+AWaRe classes as suggested by WHO (\url{https://adoptaware.org/}): green =
+access, amber = watch, red = reserve.
+
+If \code{runs.analysis = TRUE} (default) and \code{time} is provided, the
+plot will include a horisontal line representing the median of the access
+proportion. If the runs analysis finds non-random variation in the form of
+either unusually long runs of data points on the same side of the centre
+line or unusually few crossing of the centre line
+(\doi{10.1371/journal.pone.0113825}), the line will be dashed, otherwise
+the line is solid.
+}
 \examples{
 awr_plot(abx_sales, atc, ddd)
 awr_plot(abx_sales, atc, ddd, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month)
 awr_plot(abx_sales, atc, ddd, time = month, unit = region)
 awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
+
 }

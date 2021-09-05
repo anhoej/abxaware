@@ -4,10 +4,10 @@ runs.analysis <- function(x, cl) {
   runs            <- runs[runs != 0 & !is.na(runs)]
   run.lengths     <- rle(runs)$lengths
   n.useful        <- sum(run.lengths)
-  longest.run     <- max(run.lengths)
   n.crossings     <- length(run.lengths) - 1
-  longest.run.max <- round(log2(n.useful)) + 3
   n.crossings.min <- stats::qbinom(0.05, n.useful - 1, 0.5)
+  longest.run     <- max(run.lengths)
+  longest.run.max <- round(log2(n.useful)) + 3
   runs.signal     <- longest.run > longest.run.max |
     n.crossings < n.crossings.min
 
@@ -108,10 +108,26 @@ awr_aggregate <- function(df,
 #' @param unit Organisational unit.
 #' @param ncol Integer, number of columns in faceted plots.
 #' @param legend.position Character, where to put legend (e.g. 'none', 'right',
-#'        'bottom').
-#' @param ... Other arguments to awr_aggregate() and ggplot().
+#'   'bottom').
+#' @param runs.analysis Logical, if TRUE (default) add runs analysis to plot.
+#'   See Details.
+#' @param ... Other arguments to \code{\link{awr_aggregate}} and
+#'   \code{\link[ggplot2]{ggplot}}.
 #'
 #' @return A ggplot object.
+#'
+#' @details The plot show the relative distribution of antibiotics in the three
+#'   AWaRe classes as suggested by WHO (\url{https://adoptaware.org/}): green =
+#'   access, amber = watch, red = reserve.
+#'
+#'   If \code{runs.analysis = TRUE} (default) and \code{time} is provided, the
+#'   plot will include a horisontal line representing the median of the access
+#'   proportion. If the runs analysis finds non-random variation in the form of
+#'   either unusually long runs of data points on the same side of the centre
+#'   line or unusually few crossing of the centre line
+#'   (\doi{10.1371/journal.pone.0113825}), the line will be dashed, otherwise
+#'   the line is solid.
+#'
 #' @export
 #'
 #' @examples
@@ -120,7 +136,7 @@ awr_aggregate <- function(df,
 #' awr_plot(abx_sales, atc, ddd, time = month)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = region)
 #' awr_plot(abx_sales, atc, ddd, time = month, unit = hospital, ncol = 4)
-
+#'
 awr_plot <- function(df,
                      atc             = atc,
                      ddd             = ddd,
@@ -128,6 +144,7 @@ awr_plot <- function(df,
                      unit            = NULL,
                      ncol            = NULL,
                      legend.position = NULL,
+                     runs.analysis   = TRUE,
                      ...) {
 
   d <- awr_aggregate(df,
@@ -168,24 +185,38 @@ awr_plot <- function(df,
            call. = FALSE)
     }
 
-    d.access <- d %>%
-      dplyr::filter(aware == 'access') %>%
-      dplyr::group_by({{ unit }}) %>%
-      dplyr::mutate(cl = stats::median(p),
-                    ra = runs.analysis(p, cl))
-
     p <- ggplot2::ggplot(d,
                          ggplot2::aes(x    = {{ time }},
                                       y    = p,
                                       fill = aware)) +
-      ggplot2::geom_area() +
-      ggplot2::geom_line(ggplot2::aes(x        = {{ time }},
-                                      y        = cl,
-                                      linetype = ra),
-                         data = d.access,
-                         colour = 'gray50') +
-      ggplot2::scale_linetype_manual(values = c('FALSE' = 'solid',
-                                                'TRUE' = 'dashed'))
+      ggplot2::geom_area()
+
+    if (runs.analysis) {
+      d.access <- d %>%
+        dplyr::filter(aware == 'access') %>%
+        dplyr::group_by({{ unit }}) %>%
+        dplyr::mutate(cl = stats::median(p),
+                      ra = runs.analysis(p, cl))
+
+      p <- p +
+        ggplot2::geom_line(ggplot2::aes(x        = {{ time }},
+                                        y        = cl,
+                                        linetype = ra),
+                           data = d.access,
+                           colour = 'gray50') +
+        ggplot2::geom_text(ggplot2::aes(x = max({{ time }}),
+                                        y = cl,
+                                        label = scales::label_percent(1)(cl)),
+                           data = d.access,
+                           check_overlap = T,
+                           hjust = 1.1,
+                           vjust = -0.3,
+                           size = 3.2,
+                           colour = 'gray20') +
+        ggplot2::scale_linetype_manual(values = c('FALSE' = 'solid',
+                                                  'TRUE' = 'dashed'),
+                                       guide = 'none')
+    }
 
     if(!missing(unit) )
       p <- p + ggplot2::facet_wrap(ggplot2::vars({{ unit }}),
