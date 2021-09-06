@@ -31,18 +31,3 @@
 #' }
 #' @source \url{https://amgros.dk/}
 "abx_sales"
-#'
-#' #' Antibiotic usage.
-#' #'
-#' #' A dataset containing antibiotic usage data from from six hospitals from
-#' #' varying time periods.
-#' #'
-#' #' @format A data frame with 8441 rows and 5 variables:
-#' #' \describe{
-#' #'   \item{hosp}{Hospital, character}
-#' #'   \item{month}{Month, date}
-#' #'   \item{atc}{ATC code, character}
-#' #'   \item{drug}{Drug name, character}
-#' #'   \item{days}{Number of antibiotic treatment days, 1 patient x 1 drug = 1 day}
-#' #' }
-#' "abx_days"

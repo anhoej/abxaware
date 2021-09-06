@@ -21,9 +21,9 @@ runs.analysis <- function(x, cl) {
 #' @param ddd Amount (usually Defined Daily Doses).
 #' @param ... Grouping variables.
 #' @param tall If TRUE (default) outputs data in tall format.
-#' @param method 'dk' (default), uk or 'who' indicating the AWaRe classification to
-#'        be used. The default may be changed within an R session using
-#'         `options(abxaware.method = 'who')`.
+#' @param method 'dk' (default), uk or 'who' indicating the AWaRe classification
+#'   to be used. The default may be changed within an R session using
+#'   `options(abxaware.method = 'who')`.
 #' @param ignore.other If TRUE, ignores drugs that have no AWaRe class.
 #' @param silent If TRUE, prints method.
 #'
@@ -124,9 +124,9 @@ awr_aggregate <- function(df,
 #'   plot will include a horisontal line representing the median of the access
 #'   proportion. If the runs analysis finds non-random variation in the form of
 #'   either unusually long runs of data points on the same side of the centre
-#'   line or unusually few crossing of the centre line
-#'   (Anhøj 2014, \doi{10.1371/journal.pone.0113825}), the line will be dashed, otherwise
-#'   the line is solid.
+#'   line or unusually few crossing of the centre line (Anhøj 2014,
+#'   \doi{10.1371/journal.pone.0113825}), the line will be dashed, otherwise the
+#'   line is solid.
 #'
 #' @export
 #'
