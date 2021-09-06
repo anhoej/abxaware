@@ -26,7 +26,7 @@ awr_aggregate(
 
 \item{tall}{If TRUE (default) outputs data in tall format.}
 
-\item{method}{'dk' (default) or 'who' indicating the AWaRe classification to
+\item{method}{'dk' (default), uk or 'who' indicating the AWaRe classification to
 be used. The default may be changed within an R session using
 \code{options(abxaware.method = 'who')}.}
 

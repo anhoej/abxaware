@@ -43,7 +43,9 @@ WHO suggests that countries should increase the proportion of access antibiotics
 
 `abxaware` is an R package that contains a list of antibacterial drugs for systemic use (ATC group J01) and the corresponding AWaRe classification plus functions to aggregate and visualise antibiotic use according to AWaRe.
 
-The classification data frame (`abx_aware`, see Appendix) contains both the latest 2019 WHO classification and our own adaptation to Danish guidelines. In the Danish classification, which is default in `abxaware` functions, two drugs have been moved up one level: amoxicillin and beta-lactamase inhibitor from access to watch and meropenem from watch to reserve. Additionally, some drugs that are unclassified by WHO are included in the Danish AWaRe classification in order to cover nearly all antibiotics used in Danish hospitals.
+The classification data frame (`abx_aware`, see Appendix) contains both the latest 2019 WHO classification, the English classification (Budd 2019) and our own adaptation to Danish guidelines. 
+
+In the Danish classification, which is default in `abxaware` functions, two drugs have been moved up one level: amoxicillin and beta-lactamase inhibitor from access to watch and meropenem from watch to reserve. Additionally, two drugs (sulfapyridine and sulfadiazine) that are unclassified by WHO are included in the Danish AWaRe classification in order to cover nearly all antibiotics used in Danish hospitals.
 
 
 ```{r, echo=FALSE, fig.height=1.5}
@@ -52,7 +54,7 @@ awr_plot(abx_sales,
          ddd, 
          ignore.other = TRUE,
          silent       = TRUE) +
-  ggplot2::labs(title = 'Use of antibiotics in public, somatic hospitals in Denmark 2015-2020')
+  ggplot2::labs(title = 'Use of antibiotics in public, somatic hospitals in Denmark 2015-2021')
 ```
 
 ## Preparing data
@@ -78,7 +80,14 @@ awr_plot(abx_sales,
          ddd = ddd)
 ```
 
-Note that data have been automatically aggregated by AWaRe group before plotting.
+`awr_plot()` automatically aggregates data and prints a message telling which classification was used, WHO, UK or DK. By default, the DK classification is used, but the method can be specified using the `method` argument.
+
+```{r, fig.height=1.5}
+awr_plot(abx_sales, method = 'who')
+awr_plot(abx_sales, method = 'uk')
+```
+
+The default method for an R session may be specified in advance as an option, for example: `options(abxaware.method = 'who')`.
 
 To split data by organisational unit, provide a unit variable:
 
@@ -100,7 +109,7 @@ awr_plot(abx_sales,
 
 Or combine time and unit to create faceted time series plots.
 
-```{r, fig.height=7}
+```{r, fig.height=8}
 awr_plot(abx_sales,
          atc, 
          ddd, 
@@ -109,7 +118,7 @@ awr_plot(abx_sales,
          ncol = 1)
 ```
 
-```{r, fig.height=9}
+```{r, fig.height=11}
 awr_plot(abx_sales,
          atc, 
          ddd, 
@@ -118,14 +127,7 @@ awr_plot(abx_sales,
          ncol = 2)
 ```
 
-Note that `awr_plot()` prints a message telling which classification was used, WHO or DK. By default, the DK classification is used. But the method can be specified using the `method` argument.
-
-```{r, fig.height=1.5}
-awr_plot(abx_sales, method = 'dk')
-awr_plot(abx_sales, method = 'who')
-```
-
-Also, the default method for an R session may be specified as an option, for example: `options(abxaware.method = 'who')`.
+The horizontal line represents the median percentage use of antibiotics in the access group. In case of non-random variation over time, the line is dashed, otherwise solid. To test for non-random variation two rules are employed for unusually long runs of consecutive data points on the same side of the centre line and unusually few crossings of the centre line respectively (Anhøj 2014)). If one or both test are positive, this may be taken as a signal that non-random variation (e.g. trends, shift, or cyclic patterns) is present.
 
 To add title, subtitle, caption etc. to a plot, use the `labs` function from `ggplot2`. See `?awr_plot` for details on other arguments.
 
@@ -136,7 +138,7 @@ awr_plot(abx_sales,
          time = month,
          ignore.other = TRUE,
          silent       = TRUE) +
-  ggplot2::labs(title   = 'Use of antibiotics in public, somatic hospitals in Denmark 2015-2020',
+  ggplot2::labs(title   = 'Use of antibiotics in Danish hospitals 2015-2020',
                 x       = 'Month',
                 caption = 'Created with abxaware for R')
 ```
@@ -176,6 +178,8 @@ awr_aggregate(abx_sales,
 * Emma Budd et al. (2019). Adaptation of the WHO Essential Medicines List for national antibiotic stewardship policy in England: being AWaRe, Journal of Antimicrobial Chemotherapy. https://doi.org/10.1093/jac/dkz321
 
 * Ines Pauwels et al. (2021). Hospital antibiotic prescribing patterns in adult patients according to the WHO Access, Watch and Reserve classification (AWaRe): results from a worldwide point prevalence survey in 69 countries, Journal of Antimicrobial Chemotherapy. https://doi.org/10.1093/jac/dkab050
+
+* Jacob Anhøj, Anne Vingaard Olesen (2014). Run Charts Revisited: A Simulation Study of Run Chart Rules for Detection of Non-Random Variation in Health Care Processes. https://doi.org/10.1371/journal.pone.0113825
 
 ## Appendix: Table for mapping ATC codes to AWaRe groups
 ```{r, echo=FALSE}
