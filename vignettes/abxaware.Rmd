@@ -63,7 +63,7 @@ To create a plot like the one above, you need a data frame with at least two col
 
 <!-- `abxaware` contains two example data frames: `abx_sales` and `abx_days`. See the help pages for details. -->
 
-In the following examples we will use the `abx_sales` data frame. In addition to the `atc` and `ddd` columns, `abx_sales` have a time variable (`month`) and two unit variables (`region` and `hospital`). That is, for each month, atc group and hospital in one of five Danish regions the amount of drug used is found in the `ddd` variable.
+In the following examples we will use the `abx_sales` data frame. In addition to the `atc` and `ddd` columns, `abx_sales` has a time variable (`month`) and two unit variables (`region` and `hospital`). That is, for each month, atc group and hospital in one of five Danish regions the amount of drug used is found in the `ddd` variable.
 
 ```{r}
 library(abxaware)
