@@ -6,8 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of abxaware is to help aggregating and plotting antibiotic
-usage data in accordance with the WHO AWaRe classification easy.
+The goal of abxaware is to help aggregate and plot antibiotic usage data
+in accordance with the WHO AWaRe classification.
 
 ## Installation
 
