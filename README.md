@@ -20,7 +20,8 @@ devtools::install_github("anhoej/abxaware",
                          build_vignettes = TRUE)
 ```
 
-Go to <https://anhoej.github.io/abxaware/> for further information.
+To get started, read the vignette:
+<https://anhoej.github.io/abxaware/articles/abxaware.html>.
 
 ## Example
 
