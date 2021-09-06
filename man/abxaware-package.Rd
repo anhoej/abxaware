@@ -9,6 +9,13 @@
 Aggregate and plot antibiotic usage data by access, watch, and reserve
   (AWaRe) groups.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://anhoej.github.io/abxaware/}
+}
+
+}
 \author{
 \strong{Maintainer}: Jacob Anhøj \email{jacob@anhoej.net} (\href{https://orcid.org/0000-0002-7701-1774}{ORCID})
 
