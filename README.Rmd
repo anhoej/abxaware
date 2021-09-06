@@ -1,0 +1,45 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+```
+
+# abxaware
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of abxaware is to help aggregating and plotting antibiotic usage data in accordance with the WHO AWaRe classification easy.
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("anhoej/abxaware", 
+                         build_vignettes = TRUE)
+```
+
+## Example
+
+To create a plot of antibiotic use in Danish hospitals from the included dataset `abx_sales` run this:
+
+```{r example, fig.height=9}
+library(abxaware)
+
+awr_plot(abx_sales,
+         atc, 
+         ddd, 
+         time = month, 
+         unit = region, 
+         ncol = 1)
+```
