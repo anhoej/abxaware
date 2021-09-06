@@ -29,6 +29,8 @@ devtools::install_github("anhoej/abxaware",
                          build_vignettes = TRUE)
 ```
 
+Go to https://anhoej.github.io/abxaware/ for further information.
+
 ## Example
 
 To create a plot of antibiotic use in Danish hospitals from the included dataset `abx_sales` run this:
