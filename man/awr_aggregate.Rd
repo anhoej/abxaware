@@ -26,8 +26,8 @@ awr_aggregate(
 
 \item{tall}{If TRUE (default) outputs data in tall format.}
 
-\item{method}{'dk' (default), uk or 'who' indicating the AWaRe classification to
-be used. The default may be changed within an R session using
+\item{method}{'dk' (default), uk or 'who' indicating the AWaRe classification
+to be used. The default may be changed within an R session using
 \code{options(abxaware.method = 'who')}.}
 
 \item{ignore.other}{If TRUE, ignores drugs that have no AWaRe class.}

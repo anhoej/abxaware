@@ -24,6 +24,7 @@
 #' \describe{
 #'   \item{region}{Region, character}
 #'   \item{hospital}{Hospital, character}
+#'   \item{hosp}{Hospital abbreviated, character}
 #'   \item{month}{Month, date}
 #'   \item{atc}{ATC code, character}
 #'   \item{drug}{Drug name, character}

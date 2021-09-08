@@ -53,9 +53,9 @@ If \code{runs.analysis = TRUE} (default) and \code{time} is provided, the
 plot will include a horisontal line representing the median of the access
 proportion. If the runs analysis finds non-random variation in the form of
 either unusually long runs of data points on the same side of the centre
-line or unusually few crossing of the centre line
-(Anhøj 2014, \doi{10.1371/journal.pone.0113825}), the line will be dashed, otherwise
-the line is solid.
+line or unusually few crossing of the centre line (Anhøj 2014,
+\doi{10.1371/journal.pone.0113825}), the line will be dashed, otherwise the
+line is solid.
 }
 \examples{
 awr_plot(abx_sales, atc, ddd)

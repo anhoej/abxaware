@@ -9,6 +9,7 @@ A data frame with 47551 rows and 7 variables:
 \describe{
 \item{region}{Region, character}
 \item{hospital}{Hospital, character}
+\item{hosp}{Hospital abbreviated, character}
 \item{month}{Month, date}
 \item{atc}{ATC code, character}
 \item{drug}{Drug name, character}
