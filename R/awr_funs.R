@@ -203,16 +203,16 @@ awr_plot <- function(df,
                                         y        = cl,
                                         linetype = ra),
                            data = d.access,
-                           colour = 'gray50') +
-        ggplot2::geom_text(ggplot2::aes(x = max({{ time }}),
-                                        y = cl,
+                           colour = 'white') +
+        ggplot2::geom_text(ggplot2::aes(x     = max({{ time }}),
+                                        y     = cl,
                                         label = scales::label_percent(1)(cl)),
-                           data = d.access,
-                           check_overlap = T,
-                           hjust = 1.1,
-                           vjust = -0.3,
-                           size = 3,
-                           colour = 'gray20') +
+                           data   = dplyr::filter(d.access,
+                                                {{ time }} == max({{ time }})),
+                           hjust  = 1.1,
+                           vjust  = -0.3,
+                           size   = 2.8,
+                           colour = 'gray30') +
         ggplot2::scale_linetype_manual(values = c('FALSE' = 'solid',
                                                   'TRUE' = 'dashed'),
                                        guide = 'none')
