@@ -208,7 +208,7 @@ awr_plot <- function(df,
                                         y     = cl,
                                         label = scales::label_percent(1)(cl)),
                            data   = dplyr::filter(d.access,
-                                                {{ time }} == max({{ time }})),
+                                                  {{ time }} == max({{ time }})),
                            hjust  = 1.1,
                            vjust  = -0.3,
                            size   = 2.8,
@@ -231,6 +231,13 @@ awr_plot <- function(df,
     ggplot2::scale_fill_manual(values = cols) +
     ggplot2::labs(y    = NULL,
                   fill = NULL)
+
+  if (!is.null(legend.position)) {
+    if (legend.position %in% c('bottom', 'top')) {
+      p <- p +
+        ggplot2::guides(fill = ggplot2::guide_legend(reverse = T))
+    }
+  }
 
   p
 }
