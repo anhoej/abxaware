@@ -6,8 +6,7 @@
 \alias{abxaware-package}
 \title{abxaware: AWaRe classification of Antibiotic Usage Data}
 \description{
-Aggregate and plot antibiotic usage data by access, watch, and reserve
-  (AWaRe) groups.
+Aggregate and plot antibiotic usage data by access, watch, and reserve (AWaRe) groups.
 }
 \seealso{
 Useful links:
