@@ -84,8 +84,9 @@ awr_aggregate <- function(df,
 
   if(!ignore.other) {
     d <- d %>%
-      dplyr::mutate(aware = forcats::fct_explicit_na(aware, 'other'),
-                    aware = forcats::fct_relevel(aware, 'other'))
+      dplyr::mutate(#aware = forcats::fct_explicit_na(aware, 'other'),
+        aware = forcats::fct_na_value_to_level(aware, 'other'),
+        aware = forcats::fct_relevel(aware, 'other'))
   }
 
   if(!tall) {
