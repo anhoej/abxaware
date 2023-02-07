@@ -4,6 +4,8 @@
 # abxaware
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/anhoej/abxaware/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/anhoej/abxaware/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of abxaware is to help aggregate and plot antibiotic usage data
