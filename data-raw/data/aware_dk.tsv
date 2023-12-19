@@ -139,9 +139,9 @@ J01DF01	aztreonam	reserve
 J01DF02	carumonam	NA
 J01DH	Carbapenems	NA
 J01DH02	meropenem	reserve
-J01DH03	ertapenem	watch
-J01DH04	doripenem	watch
-J01DH05	biapenem	watch
+J01DH03	ertapenem	reserve
+J01DH04	doripenem	reserve
+J01DH05	biapenem	reserve
 J01DH06	tebipenem pivoxil	watch
 J01DH51	imipenem and cilastatin	watch
 J01DH52	meropenem and vaborbactam	reserve
