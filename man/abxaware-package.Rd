@@ -21,6 +21,7 @@ Useful links:
 Authors:
 \itemize{
   \item Jonas Bredtoft Boel (\href{https://orcid.org/0000-0003-3085-0930}{ORCID})
+  \item Marc Trunjer Kusk Nielsen \email{marc.mtk@gmail.com}
 }
 
 }

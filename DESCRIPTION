@@ -1,7 +1,7 @@
 Package: abxaware
 Title: AWaRe classification of Antibiotic Usage Data
-Version: 0.0.0.9000
-Date: 2021-09-19
+Version: 0.0.1
+Date: 2024-01-31
 Authors@R: 
     c(person(given = "Jacob",
              family = "Anhøj",
@@ -12,7 +12,11 @@ Authors@R:
              family = "Boel",
              role = c("aut"),
              email = "",
-             comment = c(ORCID = "0000-0003-3085-0930")))
+             comment = c(ORCID = "0000-0003-3085-0930")),
+      person(given = "Marc Trunjer Kusk",
+             family = "Nielsen",
+             role = c("aut"),
+             email = "marc.mtk@gmail.com"))
 Description: 
   Aggregate and plot antibiotic usage data by access, watch, and reserve
   (AWaRe) groups.
