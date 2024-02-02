@@ -157,9 +157,10 @@ awr_plot <- function(df,
                      ...)
 
   cols <- c(
-    'reserve' = '#F07E6E', # red
-    'watch'   = '#FBB258', # amber
-    'access'  = '#90CD97'  # green
+    'global reserve' = '#800080', # purple
+    'reserve'        = '#F07E6E', # red
+    'watch'          = '#FBB258', # amber
+    'access'         = '#90CD97'  # green
   )
 
   if('other' %in% levels(d$aware)) {
