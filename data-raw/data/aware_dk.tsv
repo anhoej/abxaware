@@ -13,10 +13,10 @@ J01AA08	minocycline	reserve
 J01AA09	rolitetracycline	NA
 J01AA10	penimepicycline	NA
 J01AA11	clomocycline	NA
-J01AA12	tigecycline	global reserve
-J01AA13	eravacycline	global reserve
+J01AA12	tigecycline	reserve
+J01AA13	eravacycline	reserve
 J01AA14	sarecycline	NA
-J01AA15	omadacycline	global reserve
+J01AA15	omadacycline	NA
 J01AA20	combinations of tetracyclines	NA
 J01AA56	oxytetracycline, combinations	NA
 J01B	AMPHENICOLS	NA
@@ -125,7 +125,7 @@ J01DD16	cefditoren	watch
 J01DD17	cefcapene	watch
 J01DD18	cefteram	watch
 J01DD51	cefotaxime and beta-lactamase inhibitor	NA
-J01DD52	ceftazidime and beta-lactamase inhibitor	global reserve
+J01DD52	ceftazidime and beta-lactamase inhibitor	reserve
 J01DD54	ceftriaxone, combinations	NA
 J01DD62	cefoperazone and beta-lactamase inhibitor	NA
 J01DD63	ceftriaxone and beta-lactamase inhibitor	NA
@@ -134,25 +134,25 @@ J01DE	Fourth-generation cephalosporins	NA
 J01DE01	cefepime	watch
 J01DE02	cefpirome	watch
 J01DE03	cefozopran	watch
-J01DF	Monobactams	global reserve
-J01DF01	aztreonam	global reserve
+J01DF	Monobactams	NA
+J01DF01	aztreonam	reserve
 J01DF02	carumonam	NA
-J01DH	Carbapenems	reserve
+J01DH	Carbapenems	NA
 J01DH02	meropenem	reserve
-J01DH03	ertapenem	reserve
-J01DH04	doripenem	reserve
-J01DH05	biapenem	reserve
-J01DH06	tebipenem pivoxil	reserve
-J01DH51	imipenem and cilastatin	reserve
-J01DH52	meropenem and vaborbactam	global reserve
+J01DH03	ertapenem	watch
+J01DH04	doripenem	watch
+J01DH05	biapenem	watch
+J01DH06	tebipenem pivoxil	watch
+J01DH51	imipenem and cilastatin	watch
+J01DH52	meropenem and vaborbactam	reserve
 J01DH55	panipenem and betamipron	NA
-J01DH56	imipenem, cilastatin and relebactam	global reserve
-J01DI	Other cephalosporins and penems in ATC	global reserve
+J01DH56	imipenem, cilastatin and relebactam	NA
+J01DI	Other cephalosporins and penems in ATC	NA
 J01DI01	ceftobiprole medocaril	reserve
 J01DI02	ceftaroline fosamil	reserve
 J01DI03	faropenem	reserve
-J01DI04	cefiderocol	global reserve
-J01DI54	ceftolozane and beta-lactamase inhibitor	global reserve
+J01DI04	cefiderocol	NA
+J01DI54	ceftolozane and beta-lactamase inhibitor	reserve
 J01E	SULFONAMIDES AND TRIMETHOPRIM ANTIBACTERIALS FOR SYSTEMIC USE	NA
 J01EA	Trimethoprim and derivatives, systemic antibacterials	NA
 J01EA01	trimethoprim	access
@@ -288,11 +288,11 @@ J01XA	Glycopeptide antibacterials	NA
 J01XA01	vancomycin	watch
 J01XA02	teicoplanin	watch
 J01XA03	telavancin	reserve
-J01XA04	dalbavancin	global reserve
+J01XA04	dalbavancin	reserve
 J01XA05	oritavancin	reserve
 J01XB	Polymyxins	NA
-J01XB01	colistin	global reserve
-J01XB02	polymyxin B	global reserve
+J01XB01	colistin	reserve
+J01XB02	polymyxin B	reserve
 J01XC	Steroid antibacterials	NA
 J01XC01	fusidic acid	watch
 J01XD	Imidazole derivatives, antibacterial for systemic use	NA
@@ -305,18 +305,15 @@ J01XE02	nifurtoinol	NA
 J01XE03	furazidin	NA
 J01XE51	nitrofurantoin, combinations	NA
 J01XX	Other antibacterials in ATC	NA
-J01XX01	fosfomycin	global reserve
+J01XX01	fosfomycin	reserve
 J01XX02	xibornol	NA
 J01XX03	clofoctol	watch
 J01XX04	spectinomycin	access
 J01XX05	methenamine	NA
 J01XX06	mandelic acid	NA
 J01XX07	nitroxoline	NA
-J01XX08	linezolid	global reserve
-J01XX09	daptomycin	global reserve
+J01XX08	linezolid	reserve
+J01XX09	daptomycin	reserve
 J01XX10	bacitracin	NA
 J01XX11	tedizolid	reserve
 J01XX12	lefamulin	NA
-J04AB02	rifampicin	watch
-P01AB01	metronidazole	access
-A07AA09	vancomycin	watch

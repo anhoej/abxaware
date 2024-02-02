@@ -11,8 +11,7 @@
 library(tidyverse)
 library(docxtractr)
 
-awr_levels <- c('global reserve',
-                'reserve',
+awr_levels <- c('reserve',
                 'watch',
                 'access')
 
